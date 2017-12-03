@@ -2,7 +2,6 @@
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
 <address>
     One Microsoft Way<br />
@@ -15,3 +14,10 @@
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+@*Simple form to use with the attribute [HttpPost] above the related ActionResult method declaration*@
+<h3>@ViewBag.myMessage</h3>
+<form method="post">
+    <textarea name="message"></textarea>
+    <input type="submit" value="Send" />
+</form>

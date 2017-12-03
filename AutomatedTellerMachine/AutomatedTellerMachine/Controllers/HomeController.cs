@@ -14,16 +14,22 @@ namespace AutomatedTellerMachine.Controllers
         }
 
         public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
+        {  ViewBag.Message = "Your application description page.";
             return View();
         }
 
         public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        {   // Properties of the ViewBag object can be defined by us
+            //ViewBag.Message = "Your contact page.";
+            ViewBag.myMessage = "Having trouble? Send us a message.";
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Contact(string message)
+        {
+            // TODO: send message to HQ
+            ViewBag.myMessage = "Thanks, we got your message";
             return View();
         }
 
@@ -39,7 +45,14 @@ namespace AutomatedTellerMachine.Controllers
             {
                 return Content(serial.ToLower());
             }
-            return Content(serial);
+            // Line below will return the expected serial number
+            //return Content(serial);
+            // Line below will return a 403 error page
+            //return new HttpStatusCodeResult(403, "Vete a la porra");
+            // Line below will return a JSON text
+            //return Json(new { name = "serial", value = serial }, JsonRequestBehavior.AllowGet);
+            // Line below will redirect to another ActionResult or Controller
+            return RedirectToAction("Index");
         }
 
         public ActionResult PersonName(string person)
